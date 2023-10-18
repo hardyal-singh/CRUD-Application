@@ -38,7 +38,17 @@ const userApi = {
     });
     return await handleResponse(response);
   },
+
+    logout:async(endpoint)=>{
+    const response=await fetch(`${BASE_URL}/${endpoint}`,{
+      method:"GET",
+      credentials:"include",
+      headers:{"Content-type":"application/json"}
+    });
+    return handleResponse(response);
+    },
   // Add more methods like put, delete as needed
 };
 
 export default userApi;
+

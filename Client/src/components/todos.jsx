@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeTodo } from "../Store/todoSlice";
+import { removeTodo} from "../Store/todoSlice";
 import todoApi from "../services/todoApi";
+import clickAudio from "../../src/assets/click-button-140881.mp3"
 
 export default function Todos() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todo.todos);
   const user = useSelector((state) => state.user.userData);
 
-  if (todos.length === 0)
-    return <h1 className="mt-9 flex justify-center ">Please add todo.</h1>;
+  //play when click on delete button
+  const playSound = () => {
+   const audio = new Audio(clickAudio);
+      audio.play();
+};
+
+  if (todos.length ===0)
+    return <h1 className="mt-9 flex justify-center">Please add todo.</h1>;
   return (
     <>
       <ul className="list-none">
@@ -21,6 +28,7 @@ export default function Todos() {
             <div className="text-white">{todo.todo}</div>
             <button
               onClick={() => {
+                playSound()
                 todoApi
                   .deleteTodo("/remove_todo", {
                     todo_id: user.todo_id,

@@ -41,7 +41,7 @@ const deleteTodo = async (req, res) => {
   const { todo_id, id } = req.body;
   const result = await todoModel.updateOne(
     { todo_id },
-    { $unset: { todos: { id } } }
+    { $pull: { todos: { id } } }
   );
   if (result) {
     res

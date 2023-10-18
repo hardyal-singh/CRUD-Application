@@ -11,7 +11,7 @@ export default function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const todoId = useSelector((state) => state.user.userData?.todo_id);
-
+ 
   useEffect(() => {
     userApi.getCurrentUser("/current-user").then((response) => {
       if (response.status == "ok") {
@@ -34,9 +34,9 @@ export default function App() {
   }, [todoId]);
 
   return (
-    <>
+    <div className="bg-gradient-to-r from-purple-500 to-pink-500 ">
       <Header />
       <Outlet />
-    </>
+    </div>
   );
 }
