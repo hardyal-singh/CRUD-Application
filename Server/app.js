@@ -1,12 +1,15 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const app=express();
 
-   
+   console.log(process.env.FRONTEND_URL)
 const corsOptions = {
-    origin: 'http://localhost:5173', // Specify your frontend application's origin
+    origin:process.env.FRONTEND_URL, // Specify your frontend application's origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
     optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
