@@ -9,6 +9,10 @@ dotenv.config()
 
 const app=express();
 
+app.get("/",(req,res)=>{
+  res.json("hello Dost");
+})
+
 const limiter = RateLimit({
    windowMs: 1 * 60 * 1000, // 1 minute
    max:50,
