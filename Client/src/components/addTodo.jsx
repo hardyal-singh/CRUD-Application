@@ -14,12 +14,14 @@ export default function AddTodo() {
 
    const addTodoHandler = (e) => {
     e.preventDefault();
-    todoApi.addTodo("add_todo", { todo_id:userData.todo_id,text:input,id})
+    todoApi.addTodo("add_todo",{ todo_id:userData.todo_id,text:input,id})
       .then((response) => {
         if (response.status ==="ok") {
           const todo={todo:input,id}
           dispatch(addTodo2({todo}))
           setInput("");
+        }else{
+          alert(response)
         }
       });
   };
